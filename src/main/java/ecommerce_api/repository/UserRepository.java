@@ -11,7 +11,9 @@ import ecommerce_api.entities.User;
 
 @Stateless
 public class UserRepository {
+	@SuppressWarnings("unused")
 	private static final String JPQL_SELECT_PAR_EMAIL = "SELECT u FROM User u WHERE u.email=:email";
+	@SuppressWarnings("unused")
 	private static final String PARAM_EMAIL = "email";
 	@PersistenceContext(unitName = "ecommerce")
 	private EntityManager entityManager;

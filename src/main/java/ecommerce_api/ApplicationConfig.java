@@ -5,8 +5,6 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import ecommerce_api.entities.Announcement;
-import ecommerce_api.repository.AnnouncementRepository;
 import ecommerce_api.resources.AnnouncementResource;
 import ecommerce_api.resources.UserResource;
 
