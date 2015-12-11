@@ -1,14 +1,11 @@
 package ecommerce_api.entities;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -32,20 +29,21 @@ public class User implements Serializable{
 	private String lastName;
 	@Size(min=8)
 	private String mdp;
+	private String tel;
 	private String address;
 	
-	@OneToMany(mappedBy="user")
-	List<Announcement> announcements;
-	
-	@OneToMany(mappedBy="user")
-	List<Savesearch> savesearchs;
-	
-	public List<Savesearch> getSavesearchs() {
-		return savesearchs;
-	}
-	public void setSavesearchs(List<Savesearch> savesearchs) {
-		this.savesearchs = savesearchs;
-	}
+//	@OneToMany(mappedBy="user")
+//	List<Announcement> announcements;
+//	
+//	@OneToMany(mappedBy="user")
+//	List<Savesearch> savesearchs;
+//	
+//	public List<Savesearch> getSavesearchs() {
+//		return savesearchs;
+//	}
+//	public void setSavesearchs(List<Savesearch> savesearchs) {
+//		this.savesearchs = savesearchs;
+//	}
 	public long getId() {
 		return id;
 	}
@@ -79,6 +77,12 @@ public class User implements Serializable{
 	}
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 	
 //	public List<Announcement> getAnnouncements() {
