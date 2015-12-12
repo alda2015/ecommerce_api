@@ -21,6 +21,20 @@ public class UserRepository {
 	public void addUser(User user){
 		entityManager.persist(user);
 	}
+	
+	public void inscription(String email,String mdp,Boolean admin){
+		Query requete = entityManager.createNativeQuery("select * from User where email='"+email+"'", User.class);
+		System.out.println(" inscription desire" );
+		User user = (User)requete.getSingleResult();
+//		System.out.println(" inscription desire"+user );
+//		if(user.getEmail().equals(email)){
+//			System.out.println("Email deja utiliser");
+//		}
+		user.setEmail(email);
+		user.setMdp(mdp);
+		user.setAdmin(admin);
+		entityManager.persist(user);
+	}
 
 	public User findUserByEmail(String email) {
 		Query requete = entityManager.createNativeQuery("select * from User where email='"+email+"'", User.class);

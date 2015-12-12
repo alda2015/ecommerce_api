@@ -10,6 +10,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import ecommerce_api.entities.User;
@@ -37,9 +38,30 @@ public class UserResource {
 	@Path("/addUser")
 	@Consumes("application/json")
 	public void  addUser(User user){
+		System.out.println(" inscription desire" );
 		userRepository.addUser(user);
 	}
 	
+//	@POST
+//	@Path("/inscription")
+//	@Consumes("application/json")
+//	public void  inscription(@QueryParam("email")String email,@QueryParam("mdp")String mdp,@QueryParam("admin")Boolean admin){
+//		User user = new User();
+//		user.setEmail(email);
+//		user.setMdp(mdp);
+//		user.setAdmin(admin);
+//		System.out.println("email"+user.getEmail()+"mdp"+user.getMdp()+"admin"+user.isAdmin());
+//		userRepository.addUser(user);
+//	}
+	
+	@POST
+	@Path("/inscription")
+	@Consumes("application/json")
+	public void inscription(User user){
+//		User user = new User();
+		System.out.println("email ="+user.getEmail()+"mdp ="+user.getMdp()+"admin ="+user.isAdmin());
+		userRepository.inscription(user.getEmail(),user.getMdp(),user.isAdmin());
+	}
 	
 	@DELETE
 	@Path("/{email}")
