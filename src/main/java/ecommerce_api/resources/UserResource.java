@@ -24,6 +24,8 @@ public class UserResource {
 	@EJB
 	UserRepository userRepository;
 	
+	@Context private HttpServletRequest req;
+	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<User> getAllUsers(){
@@ -51,7 +53,7 @@ public class UserResource {
 		userRepository.update(email,address);
 	}
 
-	@Context private HttpServletRequest req;
+	
 	@POST
 	@Path("/login")
 	@Consumes(MediaType.APPLICATION_JSON)

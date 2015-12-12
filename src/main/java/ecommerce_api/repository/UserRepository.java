@@ -44,6 +44,7 @@ public class UserRepository {
 		return user;
 	}
 	
+	
 	@SuppressWarnings("unchecked")
 	public List<User> getAllTheUsers(){
 		return entityManager.createNativeQuery("select * from User", User.class)
