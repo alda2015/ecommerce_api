@@ -33,6 +33,7 @@ public class User implements Serializable{
 	@Size(min=8)
 	private String mdp;
 	private String address;
+	private boolean admin;
 	
 	@OneToMany(mappedBy="user")
 	List<Announcement> announcements;
@@ -40,6 +41,13 @@ public class User implements Serializable{
 	@OneToMany(mappedBy="user")
 	List<Savesearch> savesearchs;
 	
+
+	public boolean isAdmin() {
+		return admin;
+	}
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 	public List<Savesearch> getSavesearchs() {
 		return savesearchs;
 	}
