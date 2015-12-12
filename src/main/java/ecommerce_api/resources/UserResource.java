@@ -1,7 +1,9 @@
 package ecommerce_api.resources;
 
 import java.util.List;
+
 import javax.ejb.EJB;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -10,7 +12,9 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import ecommerce_api.entities.User;
 import ecommerce_api.repository.UserRepository;
@@ -38,6 +42,15 @@ public class UserResource {
 	@Consumes("application/json")
 	public void  addUser(User user){
 		userRepository.addUser(user);
+	}
+	
+	@Context private HttpServletRequest req;
+	@POST
+	@Path("/login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response login(User u){
+		return userRepository.login(u.getEmail(),u.getMdp(),req);
 	}
 	
 	
