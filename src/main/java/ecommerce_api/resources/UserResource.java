@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -43,13 +44,11 @@ public class UserResource {
 		System.out.println(" inscription desire" );
 		userRepository.addUser(user);
 	}
-	@POST
-	@Path("/inscription")
+	@PUT
+	@Path("/update")
 	@Consumes("application/json")
-	public void inscription(User user){
-//		User user = new User();
-		System.out.println("email ="+user.getEmail()+"mdp ="+user.getMdp()+"admin ="+user.isAdmin());
-		userRepository.inscription(user.getEmail(),user.getMdp(),user.isAdmin());
+	public void inscription(String email,String address){
+		userRepository.update(email,address);
 	}
 
 	@Context private HttpServletRequest req;

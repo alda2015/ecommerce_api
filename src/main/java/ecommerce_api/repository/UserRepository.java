@@ -28,17 +28,13 @@ public class UserRepository {
 		entityManager.persist(user);
 	}
 	
-	public void inscription(String email,String mdp,Boolean admin){
+	public void update(String email,String address){
 		Query requete = entityManager.createNativeQuery("select * from User where email='"+email+"'", User.class);
-		System.out.println(" inscription desire" );
-		User user = (User)requete.getSingleResult();
-//		System.out.println(" inscription desire"+user );
-//		if(user.getEmail().equals(email)){
-//			System.out.println("Email deja utiliser");
-//		}
-		user.setEmail(email);
-		user.setMdp(mdp);
-		user.setAdmin(admin);
+		User user = (User) requete.getSingleResult();
+		if(user.getEmail().equals(email)){
+			throw new IllegalArgumentException("error");
+		}
+		user.setAddress(address);
 		entityManager.persist(user);
 	}
 
