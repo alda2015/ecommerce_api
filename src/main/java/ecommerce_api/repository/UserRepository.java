@@ -6,6 +6,12 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ecommerce_api.entities.User;
 
@@ -52,5 +58,29 @@ public class UserRepository {
 		Query requete = entityManager.createNativeQuery("select * from User where email='"+email+"'", User.class);
 		User user = (User) requete.getSingleResult();
 		entityManager.remove(user);
+	}
+	
+	public Response login(String email, String mdp, HttpServletRequest req) {
+		Query requete = entityManager.createNativeQuery("select * from User where email='"+email+"'", User.class);
+		User user = null;
+		try{
+			user = (User) requete.getSingleResult();
+		}catch(Exception e){
+			System.out.println("not found");
+			return Response.ok("{}",MediaType.APPLICATION_JSON).build();
+		}
+		
+		if (user.getMdp().equals(mdp)){
+			ObjectMapper m = new ObjectMapper();
+			try {
+				req.getSession().setAttribute("uid", user.getId());
+				return Response.ok(m.writeValueAsString(user), MediaType.APPLICATION_JSON).build();
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println(mdp+" != "+user.getMdp());
+		return Response.ok("{}", MediaType.APPLICATION_JSON).build();
 	}
 }

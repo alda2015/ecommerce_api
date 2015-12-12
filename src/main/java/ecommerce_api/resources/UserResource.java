@@ -1,17 +1,19 @@
 package ecommerce_api.resources;
 
 import java.util.List;
+
 import javax.ejb.EJB;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import ecommerce_api.entities.User;
 import ecommerce_api.repository.UserRepository;
@@ -41,19 +43,6 @@ public class UserResource {
 		System.out.println(" inscription desire" );
 		userRepository.addUser(user);
 	}
-	
-//	@POST
-//	@Path("/inscription")
-//	@Consumes("application/json")
-//	public void  inscription(@QueryParam("email")String email,@QueryParam("mdp")String mdp,@QueryParam("admin")Boolean admin){
-//		User user = new User();
-//		user.setEmail(email);
-//		user.setMdp(mdp);
-//		user.setAdmin(admin);
-//		System.out.println("email"+user.getEmail()+"mdp"+user.getMdp()+"admin"+user.isAdmin());
-//		userRepository.addUser(user);
-//	}
-	
 	@POST
 	@Path("/inscription")
 	@Consumes("application/json")
@@ -62,6 +51,16 @@ public class UserResource {
 		System.out.println("email ="+user.getEmail()+"mdp ="+user.getMdp()+"admin ="+user.isAdmin());
 		userRepository.inscription(user.getEmail(),user.getMdp(),user.isAdmin());
 	}
+
+	@Context private HttpServletRequest req;
+	@POST
+	@Path("/login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response login(User u){
+		return userRepository.login(u.getEmail(),u.getMdp(),req);
+	}
+	
 	
 	@DELETE
 	@Path("/{email}")
