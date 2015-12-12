@@ -1,11 +1,14 @@
 package ecommerce_api.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -31,19 +34,20 @@ public class User implements Serializable{
 	private String mdp;
 	private String tel;
 	private String address;
+	private boolean admin;
 	
-//	@OneToMany(mappedBy="user")
-//	List<Announcement> announcements;
-//	
-//	@OneToMany(mappedBy="user")
-//	List<Savesearch> savesearchs;
-//	
-//	public List<Savesearch> getSavesearchs() {
-//		return savesearchs;
-//	}
-//	public void setSavesearchs(List<Savesearch> savesearchs) {
-//		this.savesearchs = savesearchs;
-//	}
+	@OneToMany(mappedBy="user")
+	List<Announcement> announcements;
+	
+	@OneToMany(mappedBy="user")
+	List<Savesearch> savesearchs;
+	
+	public List<Savesearch> getSavesearchs() {
+		return savesearchs;
+	}
+	public void setSavesearchs(List<Savesearch> savesearchs) {
+		this.savesearchs = savesearchs;
+	}
 	public long getId() {
 		return id;
 	}
@@ -85,10 +89,16 @@ public class User implements Serializable{
 		this.tel = tel;
 	}
 	
-//	public List<Announcement> getAnnouncements() {
-//		return announcements;
-//	}
-//	public void setAnnouncements(List<Announcement> announcements) {
-//		this.announcements = announcements;
-//	}
+	public List<Announcement> getAnnouncements() {
+		return announcements;
+	}
+	public void setAnnouncements(List<Announcement> announcements) {
+		this.announcements = announcements;
+	}
+	public boolean isAdmin() {
+		return admin;
+	}
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 }
