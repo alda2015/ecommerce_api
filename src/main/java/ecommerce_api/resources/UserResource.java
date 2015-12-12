@@ -23,6 +23,8 @@ public class UserResource {
 	@EJB
 	UserRepository userRepository;
 	
+	@Context private HttpServletRequest req;
+	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<User> getAllUsers(){
@@ -52,7 +54,7 @@ public class UserResource {
 		userRepository.inscription(user.getEmail(),user.getMdp(),user.isAdmin());
 	}
 
-	@Context private HttpServletRequest req;
+	
 	@POST
 	@Path("/login")
 	@Consumes(MediaType.APPLICATION_JSON)
