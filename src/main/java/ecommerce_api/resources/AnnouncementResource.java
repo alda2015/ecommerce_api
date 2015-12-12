@@ -24,7 +24,7 @@ public class AnnouncementResource {
 	    @GET
 	    @Produces({MediaType.APPLICATION_JSON})
 	    public List<Announcement> getAnnouncementsByUser(){
-	        User user = userRepository.findUserByEmail("dez@gmail.com");
+	        User user = userRepository.findUserByEmail("psow@u-bordeaux.fr");
 	        return announcementRepository.findAnnouncementsByUser(user);
 	    }
 	    
@@ -32,7 +32,8 @@ public class AnnouncementResource {
 	    @Path("/addAnnouncement")
 	    @Consumes("application/json")
 	    public void  addUser(Announcement announcement){
-	        User user = userRepository.findUserByEmail("dez@gmail.com");
+
+	        User user = userRepository.findUserByEmail("psow@u-bordeaux.fr");
 	        announcement.setCreatedDate(new Date());
 	        announcement.setUser(user);
 	        announcementRepository.addAnnouncement(announcement);

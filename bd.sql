@@ -10,6 +10,7 @@ create table User(
 	tel varchar(32),
 	address varchar(255),
 	firstname varchar(64),
+	admin boolean,
 	lastname varchar(64)
 );
 

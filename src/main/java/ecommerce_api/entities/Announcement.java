@@ -24,7 +24,6 @@ public class Announcement implements Serializable{
 	private long id;
 	@NotNull
 	private String titre;
-	
 	private float prix;
 	private float surface;
 	private String localisation;

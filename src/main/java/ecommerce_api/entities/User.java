@@ -32,6 +32,7 @@ public class User implements Serializable{
 	private String lastName;
 	@Size(min=8)
 	private String mdp;
+	private String tel;
 	private String address;
 	private boolean admin;
 	
@@ -88,11 +89,18 @@ public class User implements Serializable{
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
 	
-//	public List<Announcement> getAnnouncements() {
-//		return announcements;
-//	}
-//	public void setAnnouncements(List<Announcement> announcements) {
-//		this.announcements = announcements;
-//	}
+	public List<Announcement> getAnnouncements() {
+		return announcements;
+	}
+	public void setAnnouncements(List<Announcement> announcements) {
+		this.announcements = announcements;
+	}
+	
 }
