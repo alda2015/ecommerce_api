@@ -40,7 +40,6 @@ public class AnnouncementResource {
 	    @Path("/addAnnouncement")
 	    @Consumes("application/json")
 	    public void  addUser(Announcement announcement){
-
 	        User user = userRepository.findUserByEmail("psow@u-bordeaux.fr");
 	        announcement.setCreatedDate(new Date());
 	        announcement.setUser(user);
