@@ -28,14 +28,14 @@ public class UserRepository {
 		entityManager.persist(user);
 	}
 	
-	public void update(String email,String address){
-		Query requete = entityManager.createNativeQuery("select * from User where email='"+email+"'", User.class);
-		User user = (User) requete.getSingleResult();
-		if(user.getEmail().equals(email)){
-			throw new IllegalArgumentException("error");
-		}
-		user.setAddress(address);
-		entityManager.persist(user);
+	public void update(User u,HttpServletRequest req){
+		if(req.getSession().getAttribute("uid")==null)
+			throw new IllegalArgumentException("Authenticate please");
+		if(u.getId() != (Long)req.getSession().getAttribute("uid"))
+			throw new IllegalArgumentException("Not identified");
+		if(entityManager.find(User.class, u.getId())==null)
+			throw new IllegalArgumentException("Unknown user");
+		entityManager.merge(u);
 	}
 
 	public User findUserByEmail(String email) {
@@ -43,7 +43,6 @@ public class UserRepository {
 		User user = (User) requete.getSingleResult();
 		return user;
 	}
-	
 	
 	@SuppressWarnings("unchecked")
 	public List<User> getAllTheUsers(){
@@ -59,25 +58,28 @@ public class UserRepository {
 	
 	public Response login(String email, String mdp, HttpServletRequest req) {
 		Query requete = entityManager.createNativeQuery("select * from User where email='"+email+"'", User.class);
+		System.out.println("email : "+email+" mdp : "+mdp);
 		User user = null;
 		try{
 			user = (User) requete.getSingleResult();
 		}catch(Exception e){
 			System.out.println("not found");
-			return Response.ok("{}",MediaType.APPLICATION_JSON).build();
+			return Response.ok("{\"error\" : \"not found\"}",MediaType.APPLICATION_JSON).build();
 		}
 		
 		if (user.getMdp().equals(mdp)){
 			ObjectMapper m = new ObjectMapper();
 			try {
+				System.out.println();
 				req.getSession().setAttribute("uid", user.getId());
 				return Response.ok(m.writeValueAsString(user), MediaType.APPLICATION_JSON).build();
 			} catch (JsonProcessingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println(user.getEmail());
+				return Response.ok("{\"error \": \"Error JSON Processing\"}",MediaType.APPLICATION_JSON).build();
 			}
 		}
 		System.out.println(mdp+" != "+user.getMdp());
 		return Response.ok("{}", MediaType.APPLICATION_JSON).build();
 	}
+
 }
