@@ -36,11 +36,11 @@ public class User implements Serializable{
 	private String address;
 	private boolean admin;
 	
-//	@OneToMany(mappedBy="user")
-//	List<Announcement> announcements;
+	@OneToMany(mappedBy="user")
+	List<Announcement> announcements;
 	
-//	@OneToMany(mappedBy="user")
-//	List<Savesearch> savesearchs;
+	@OneToMany(mappedBy="user")
+	List<Savesearch> savesearchs;
 	
 
 	public boolean isAdmin() {
