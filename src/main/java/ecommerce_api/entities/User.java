@@ -49,12 +49,12 @@ public class User implements Serializable{
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-	public List<Savesearch> getSavesearchs() {
-		return savesearchs;
-	}
-	public void setSavesearchs(List<Savesearch> savesearchs) {
-		this.savesearchs = savesearchs;
-	}
+//	public List<Savesearch> getSavesearchs() {
+//		return savesearchs;
+//	}
+//	public void setSavesearchs(List<Savesearch> savesearchs) {
+//		this.savesearchs = savesearchs;
+//	}
 	public long getId() {
 		return id;
 	}
@@ -96,11 +96,11 @@ public class User implements Serializable{
 		this.tel = tel;
 	}
 	
-	public List<Announcement> getAnnouncements() {
-		return announcements;
-	}
-	public void setAnnouncements(List<Announcement> announcements) {
-		this.announcements = announcements;
-	}
+//	public List<Announcement> getAnnouncements() {
+//		return announcements;
+//	}
+//	public void setAnnouncements(List<Announcement> announcements) {
+//		this.announcements = announcements;
+//	}
 	
 }

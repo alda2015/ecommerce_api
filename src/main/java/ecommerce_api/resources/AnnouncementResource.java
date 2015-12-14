@@ -47,6 +47,7 @@ public class AnnouncementResource {
 	    
 	    /*a revoir*/
 	    @GET
+	    @Path("/all")
 	    @Produces({MediaType.APPLICATION_JSON})
 	    public List<Announcement> getAllannouncements(){
 	        return announcementRepository.getAllTheAnnouncement();

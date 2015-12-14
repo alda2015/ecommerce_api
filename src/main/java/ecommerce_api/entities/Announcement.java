@@ -21,7 +21,7 @@ public class Announcement implements Serializable{
 	private static final long serialVersionUID = 9129298985708507881L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	private int id;
 	@NotNull
 	private String title;
 	private float prix;
@@ -71,7 +71,7 @@ public class Announcement implements Serializable{
 	public long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getDescr() {
