@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name="Announcement")
@@ -28,7 +28,7 @@ public class Announcement implements Serializable{
 	private float surface;
 	private String localisation;
 	private String photo;
-	@Size(max=200)
+//	@Size(max=200)
 	private String descr;
 	@Temporal(TemporalType.DATE)
 	private Date datePost;
@@ -85,12 +85,6 @@ public class Announcement implements Serializable{
 	}
 	public void setdatePost(Date datePost) {
 		this.datePost = datePost;
-	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
 	}
 	
 }

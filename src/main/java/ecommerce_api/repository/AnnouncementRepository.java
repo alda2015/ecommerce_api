@@ -1,10 +1,12 @@
 package ecommerce_api.repository;
 
 import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
 import ecommerce_api.entities.Announcement;
 import ecommerce_api.entities.User;
 
@@ -32,13 +34,24 @@ public class AnnouncementRepository {
 	    /*a revoir*/
 		@SuppressWarnings("unchecked")
 		public List<Announcement> getAllTheAnnouncement(){
-			return entityManager.createNativeQuery("select * from Announcement", Announcement.class)
-					.getResultList();
+			Query requete = entityManager.createNativeQuery("select * from Announcement", Announcement.class);
+			System.out.println("getR");
+			List<Announcement> announcements= (List<Announcement>)requete.getResultList();
+			
+			return announcements;
 		}
 		
 		public List<Announcement> findUserByAnnouncement(Float prix,String title) {
 			Query requete = entityManager.createNativeQuery("select * from Announcement where prix='"+prix+"' And title='"+title+"'", Announcement.class);
 			@SuppressWarnings("unchecked")
+			List<Announcement> announcements= (List<Announcement>)requete.getResultList();
+			return announcements;
+		}
+
+
+		@SuppressWarnings("unchecked")
+		public List<Announcement> findAnnouncementsByUserId(Long uid) {
+			Query requete = entityManager.createNativeQuery("select * from Announcement where user_id='"+uid+"'", Announcement.class);
 			List<Announcement> announcements= (List<Announcement>)requete.getResultList();
 			return announcements;
 		}

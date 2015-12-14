@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -32,10 +31,10 @@ public class AnnouncementResource {
 	    
 	    @GET
 	    @Produces({MediaType.APPLICATION_JSON})
-	    public List<Announcement> getAnnouncementsByUser(){
-	    	System.out.println(req.getSession().getAttribute("uid"));
-	        User user = userRepository.findUserByEmail("landry@gmail.com");
-	        return announcementRepository.findAnnouncementsByUser(user);
+	    public List<Announcement> getAnnouncementsByUser() throws IllegalAccessException{
+	    	if(req.getSession().getAttribute("uid")==null)
+	    		throw new IllegalAccessException("User not authenticated");
+	        return announcementRepository.findAnnouncementsByUserId((Long)req.getSession().getAttribute("uid"));
 	    }
 	    
 	    @GET
@@ -45,7 +44,7 @@ public class AnnouncementResource {
 			return announcementRepository.findUserByAnnouncement(prix,title);
 		}
 	    
-	    /*a revoir*/
+	    
 	    @GET
 	    @Path("/all")
 	    @Produces({MediaType.APPLICATION_JSON})
@@ -59,7 +58,6 @@ public class AnnouncementResource {
 	    public void  addUser(Announcement announcement){
 	        User user = userRepository.findUserByEmail("psow@u-bordeaux.fr");
 	        announcement.setdatePost(new Date());
-	        announcement.setUser(user);
 	        announcementRepository.addAnnouncement(announcement);
 	    }
 }
