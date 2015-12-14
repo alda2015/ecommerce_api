@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.servlet.http.HttpServletRequest;
 
 import ecommerce_api.entities.Announcement;
 import ecommerce_api.entities.User;
@@ -31,13 +32,12 @@ public class AnnouncementRepository {
 	        return announcements;
 	    }
 	    
-	    /*a revoir*/
+//	    /*a revoir*/
 		@SuppressWarnings("unchecked")
 		public List<Announcement> getAllTheAnnouncement(){
 			Query requete = entityManager.createNativeQuery("select * from Announcement", Announcement.class);
 			System.out.println("getR");
 			List<Announcement> announcements= (List<Announcement>)requete.getResultList();
-			
 			return announcements;
 		}
 		
@@ -55,4 +55,17 @@ public class AnnouncementRepository {
 			List<Announcement> announcements= (List<Announcement>)requete.getResultList();
 			return announcements;
 		}
+		
+		public void deleteAnnouncement(int aid,Long uid){
+			Query requete = entityManager.createNativeQuery("select * from Announcement where id='"+aid+"' And user_id='"+uid+"'", Announcement.class);
+			Announcement announcement= (Announcement) requete.getSingleResult();
+			if(announcement.getId()!=aid)
+				throw new IllegalArgumentException("Supprèssion Impossible");
+			entityManager.remove(announcement);
+		}
+		
+		public void updateAnnouncement(Announcement a){
+			entityManager.merge(a);
+		}
+
 	}
