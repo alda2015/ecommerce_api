@@ -28,4 +28,18 @@ public class AnnouncementRepository {
 	        List<Announcement> announcements = (List<Announcement>)requete.getResultList();
 	        return announcements;
 	    }
+	    
+	    /*a revoir*/
+		@SuppressWarnings("unchecked")
+		public List<Announcement> getAllTheAnnouncement(){
+			return entityManager.createNativeQuery("select * from Announcement", Announcement.class)
+					.getResultList();
+		}
+		
+		public List<Announcement> findUserByAnnouncement(Float prix,String title) {
+			Query requete = entityManager.createNativeQuery("select * from Announcement where prix='"+prix+"' And title='"+title+"'", Announcement.class);
+			@SuppressWarnings("unchecked")
+			List<Announcement> announcements= (List<Announcement>)requete.getResultList();
+			return announcements;
+		}
 	}

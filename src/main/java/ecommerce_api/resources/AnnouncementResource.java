@@ -2,11 +2,13 @@ package ecommerce_api.resources;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 
 import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -26,14 +28,28 @@ public class AnnouncementResource {
 	    @EJB
 	    UserRepository userRepository;
 	    
-	    @Context private HttpServletRequest req; 
+	    @Context private HttpServletRequest req;
 	    
 	    @GET
 	    @Produces({MediaType.APPLICATION_JSON})
 	    public List<Announcement> getAnnouncementsByUser(){
 	    	System.out.println(req.getSession().getAttribute("uid"));
-	        User user = userRepository.findUserByEmail("psow@u-bordeaux.fr");
+	        User user = userRepository.findUserByEmail("landry@gmail.com");
 	        return announcementRepository.findAnnouncementsByUser(user);
+	    }
+	    
+	    @GET
+		@Path("/{prix}/{title}")
+		@Produces({MediaType.APPLICATION_JSON})
+		public List<Announcement> getAnnouncementByprix(@PathParam("prix")Float prix,@PathParam("title")String title){
+			return announcementRepository.findUserByAnnouncement(prix,title);
+		}
+	    
+	    /*a revoir*/
+	    @GET
+	    @Produces({MediaType.APPLICATION_JSON})
+	    public List<Announcement> getAllannouncements(){
+	        return announcementRepository.getAllTheAnnouncement();
 	    }
 	    
 	    @POST
@@ -41,7 +57,7 @@ public class AnnouncementResource {
 	    @Consumes("application/json")
 	    public void  addUser(Announcement announcement){
 	        User user = userRepository.findUserByEmail("psow@u-bordeaux.fr");
-	        announcement.setCreatedDate(new Date());
+	        announcement.setdatePost(new Date());
 	        announcement.setUser(user);
 	        announcementRepository.addAnnouncement(announcement);
 	    }

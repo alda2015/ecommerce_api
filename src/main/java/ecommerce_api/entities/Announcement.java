@@ -23,26 +23,26 @@ public class Announcement implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	@NotNull
-	private String titre;
+	private String title;
 	private float prix;
 	private float surface;
 	private String localisation;
 	private String photo;
 	@Size(max=200)
-	private String description;
+	private String descr;
 	@Temporal(TemporalType.DATE)
-	private Date createdDate;
+	private Date datePost;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id", referencedColumnName="id")
 	User user;
 	
 	
-	public String getTitre() {
-		return titre;
+	public String getTitle() {
+		return title;
 	}
 	public void setTitre(String titre) {
-		this.titre = titre;
+		this.title = titre;
 	}
 	public float getPrix() {
 		return prix;
@@ -74,17 +74,17 @@ public class Announcement implements Serializable{
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getDescription() {
-		return description;
+	public String getDescr() {
+		return descr;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescr(String descr) {
+		this.descr = descr;
 	}
-	public Date getCreatedDate() {
-		return createdDate;
+	public Date getdatePost() {
+		return datePost;
 	}
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setdatePost(Date datePost) {
+		this.datePost = datePost;
 	}
 	public User getUser() {
 		return user;
