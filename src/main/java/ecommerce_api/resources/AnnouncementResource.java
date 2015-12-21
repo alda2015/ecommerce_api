@@ -16,7 +16,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import ecommerce_api.entities.Announcement;
-import ecommerce_api.entities.User;
 import ecommerce_api.repository.AnnouncementRepository;
 import ecommerce_api.repository.UserRepository;
 
@@ -55,8 +54,7 @@ public class AnnouncementResource {
 	    @POST
 	    @Path("/addAnnouncement")
 	    @Consumes("application/json")
-	    public void  addUser(Announcement announcement){
-	        User user = userRepository.findUserByEmail("psow@u-bordeaux.fr");
+	    public void  addAnnouncement(Announcement announcement){
 	        announcement.setdatePost(new Date());
 	        announcementRepository.addAnnouncement(announcement);
 	    }

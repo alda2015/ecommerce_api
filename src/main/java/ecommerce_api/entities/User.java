@@ -96,11 +96,11 @@ public class User implements Serializable{
 		this.tel = tel;
 	}
 	
-//	public List<Announcement> getAnnouncements() {
-//		return announcements;
-//	}
-//	public void setAnnouncements(List<Announcement> announcements) {
-//		this.announcements = announcements;
-//	}
+	public List<Announcement> getAnnouncements() {
+		return announcements;
+	}
+	public void setAnnouncements(List<Announcement> announcements) {
+		this.announcements = announcements;
+	}
 	
 }
