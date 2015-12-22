@@ -71,11 +71,11 @@ public class UserRepository {
 			ObjectMapper m = new ObjectMapper();
 			try {
 				System.out.println();
-				req.getSession().setAttribute("uid", user.getId());
+//				req.getSession().setAttribute("uid", user.getId());
 				return Response.ok(m.writeValueAsString(user), MediaType.APPLICATION_JSON).build();
 			} catch (JsonProcessingException e) {
-				System.out.println(user.getEmail());
-				return Response.ok("{\"error \": \"Error JSON Processing\"}",MediaType.APPLICATION_JSON).build();
+				System.out.println(e.getMessage());
+				return Response.ok("{\"error \": \"Error JSON Processing "+e.getMessage()+"\"}",MediaType.APPLICATION_JSON).build();
 			}
 		}
 		System.out.println(mdp+" != "+user.getMdp());

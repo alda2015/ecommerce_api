@@ -1,0 +1,12 @@
+PersonResource personeResource = new PersonResource();
+
+personResource.addUser(user);
+
+Mockito.mock(UserRepository.class);
+
+
+Mockito.verify(userRepositorMock.addUser(Mockito.any(User.class)),1)
+
+Mockito.when(userReposirotyMock).method().ThenReturn()
+
+AssertJ
