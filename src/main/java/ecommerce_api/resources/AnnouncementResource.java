@@ -54,10 +54,13 @@ public class AnnouncementResource {
 	    }
 	    
 	    @POST
-	    @Path("/addAnnouncement")
+	    @Path("/add")
 	    @Consumes("application/json")
-	    public void  addAnnouncement(Announcement announcement){
+	    public void  addAnnouncement(Announcement announcement) throws IllegalAccessException{
 	        announcement.setdatePost(new Date());
+	        if(req.getSession().getAttribute("uid")==null)
+	    		throw new IllegalAccessException("User not authenticated");
+	        announcement.setUser((long)req.getSession().getAttribute("uid"));
 	        announcementRepository.addAnnouncement(announcement);
 	    }
 	    

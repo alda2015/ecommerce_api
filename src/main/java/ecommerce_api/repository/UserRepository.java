@@ -71,7 +71,7 @@ public class UserRepository {
 			ObjectMapper m = new ObjectMapper();
 			try {
 				System.out.println();
-//				req.getSession().setAttribute("uid", user.getId());
+				req.getSession().setAttribute("uid", user.getId());
 				return Response.ok(m.writeValueAsString(user), MediaType.APPLICATION_JSON).build();
 			} catch (JsonProcessingException e) {
 				System.out.println(e.getMessage());

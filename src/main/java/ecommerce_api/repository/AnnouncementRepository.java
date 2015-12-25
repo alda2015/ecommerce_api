@@ -21,6 +21,7 @@ public class AnnouncementRepository {
 	    private EntityManager entityManager;
 
 	    public void addAnnouncement(Announcement announcement){
+	    	System.out.println("Persist announcement");
 	        entityManager.persist(announcement);
 	    }
 
@@ -63,7 +64,7 @@ public class AnnouncementRepository {
 			Query requete = entityManager.createNativeQuery("select * from Announcement where id='"+aid+"' And user_id='"+uid+"'", Announcement.class);
 			Announcement announcement= (Announcement) requete.getSingleResult();
 			if(announcement.getId()!=aid)
-				throw new IllegalArgumentException("Supprèssion Impossible");
+				throw new IllegalArgumentException("Suppression Impossible");
 			entityManager.remove(announcement);
 		}
 		

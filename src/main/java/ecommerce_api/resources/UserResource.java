@@ -46,6 +46,7 @@ public class UserResource {
 		System.out.println(" inscription desire" );
 		userRepository.addUser(user);
 	}
+	
 	@PUT
 	@Path("/update")
 	@Consumes("application/json")
@@ -53,7 +54,6 @@ public class UserResource {
 		userRepository.update(u,req);
 	}
 
-	
 	@POST
 	@Path("/login")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -61,7 +61,6 @@ public class UserResource {
 	public Response login(User u){
 		return userRepository.login(u.getEmail(),u.getMdp(),req);
 	}
-	
 	
 	@DELETE
 	@Path("/{email}")
