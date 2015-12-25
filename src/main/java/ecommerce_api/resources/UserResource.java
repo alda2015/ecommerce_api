@@ -43,7 +43,7 @@ public class UserResource {
 	@Path("/addUser")
 	@Consumes("application/json")
 	public void  addUser(User user){
-		System.out.println(" inscription desire" );
+		//System.out.println(" inscription desire" );
 		userRepository.addUser(user);
 	}
 	@PUT

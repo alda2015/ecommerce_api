@@ -18,6 +18,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import ecommerce_api.entities.Announcement;
+import ecommerce_api.entities.User;
 import ecommerce_api.repository.AnnouncementRepository;
 import ecommerce_api.repository.UserRepository;
 
@@ -56,8 +57,17 @@ public class AnnouncementResource {
 	    @POST
 	    @Path("/addAnnouncement")
 	    @Consumes("application/json")
-	    public void  addAnnouncement(Announcement announcement){
-	        announcement.setdatePost(new Date());
+	    public void  addAnnouncement(Announcement announcement) throws IllegalAccessException{
+	    	
+	    	if(req.getSession().getAttribute("uid")==null)
+	    		throw new IllegalAccessException("User not authenticated");
+	    	
+	    	//announcement.getUser().setId((int) req.getSession().getAttribute("uid"));
+	    	System.out.println("desire");
+	    	announcement.setdatePost(new Date());
+	    	System.out.println("USER CONNECT "+ req.getSession().getAttribute("uid"));
+	    	System.out.println("announcement"+ announcement.getUser().getId() );
+	    	
 	        announcementRepository.addAnnouncement(announcement);
 	    }
 	    

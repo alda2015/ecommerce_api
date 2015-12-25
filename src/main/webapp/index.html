@@ -1,13 +1,17 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html ng-app>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+  <meta charset="ISO-8859-1">
+  <title>Insert title here</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
 </head>
-<body>
-
-<p>
-    Projet ALDA
-</p>
-</body>
+ <body>
+    <div>
+        <label>Name:</label>
+         <input type="text" ng-model="yourName" placeholder="Enter a name here">
+       <hr>
+       <h1>Hello {{yourName}}!</h1>
+    </div>
+  </body>
 </html>
+

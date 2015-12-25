@@ -37,9 +37,7 @@ public class AnnouncementRepository {
 			Query requete = entityManager.createNativeQuery("select * from Announcement", Announcement.class);
 			System.out.println("getR");
 			List<Announcement> announcements= (List<Announcement>)requete.getResultList();
-
 			System.out.println("notting ret ? "+announcements);
-
 			return announcements;
 
 		}
@@ -54,7 +52,7 @@ public class AnnouncementRepository {
 
 		@SuppressWarnings("unchecked")
 		public List<Announcement> findAnnouncementsByUserId(Long uid) {
-			Query requete = entityManager.createNativeQuery("select * from Announcement where user='"+uid+"'", Announcement.class);
+			Query requete = entityManager.createNativeQuery("select * from Announcement where user_id='"+uid+"'", Announcement.class);
 			List<Announcement> announcements= (List<Announcement>)requete.getResultList();
 			return announcements;
 		}

@@ -34,7 +34,7 @@ public class Announcement implements Serializable{
 	private Date datePost;
 	
 	@ManyToOne
-	@JoinColumn(name="user", referencedColumnName="id")
+	@JoinColumn(name="user_id", referencedColumnName="id")
 	User user;
 	
 	
