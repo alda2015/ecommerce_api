@@ -28,6 +28,20 @@ public class UserRepository {
 		entityManager.persist(user);
 	}
 	
+	public void regen(User u){
+		Query requete = entityManager.createNativeQuery("select * from User where email='"+u.getEmail()+"'", User.class);
+		User user = (User) requete.getSingleResult();
+		if( !user.getEmail().equals(u.getEmail()))
+			throw new IllegalArgumentException("error");
+		if(!user.getQuiz().equals(u.getQuiz()))
+			throw new IllegalArgumentException("error");
+		//if(!user.getMdp().equals(u.getMdp()))
+		String a=u.getMdp();
+		user.setMdp(a);
+		System.out.println("test  test  test "+ u.getEmail()+" "+ u.getQuiz() +" "+ a);	
+		entityManager.merge(user);
+	}
+	
 	public void update(User u,HttpServletRequest req){
 		if(req.getSession().getAttribute("uid")==null)
 			throw new IllegalArgumentException("Authenticate please");

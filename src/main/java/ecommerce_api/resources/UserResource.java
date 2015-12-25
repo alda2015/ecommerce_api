@@ -43,7 +43,6 @@ public class UserResource {
 	@Path("/addUser")
 	@Consumes("application/json")
 	public void  addUser(User user){
-		//System.out.println(" inscription desire" );
 		userRepository.addUser(user);
 	}
 	
@@ -52,6 +51,14 @@ public class UserResource {
 	@Consumes("application/json")
 	public void updateUser(User u){
 		userRepository.update(u,req);
+	}
+	
+	@PUT
+	@Path("/regen")
+	@Consumes("application/json")
+	public void regenMdp(User u){
+		//u.setMdp(u.getMdp());
+		userRepository.regen(u);
 	}
 
 	@POST

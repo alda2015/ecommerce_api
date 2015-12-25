@@ -49,8 +49,7 @@ public class AnnouncementRepository {
 			List<Announcement> announcements= (List<Announcement>)requete.getResultList();
 			return announcements;
 		}
-
-
+		
 		@SuppressWarnings("unchecked")
 		public List<Announcement> findAnnouncementsByUserId(Long uid) {
 			Query requete = entityManager.createNativeQuery("select * from Announcement where user_id='"+uid+"'", Announcement.class);
@@ -69,5 +68,11 @@ public class AnnouncementRepository {
 		public void updateAnnouncement(Announcement a){
 			entityManager.merge(a);
 		}
-
+		
+		public Announcement findByid(int id) {
+			Query requete = entityManager.createNativeQuery("select * from Announcement where id='"+id+"'", Announcement.class);
+			Announcement announcement = (Announcement) requete.getSingleResult();
+			return announcement;
+		}
+		
 	}

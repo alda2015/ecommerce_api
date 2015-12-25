@@ -33,6 +33,14 @@ public class User implements Serializable{
 	private String address;
 	private boolean admin;
 	
+	private String quiz;
+	
+	public void setQuiz(String quiz) {
+		this.quiz = quiz;
+	}
+	public String getQuiz() {
+		return quiz;
+	}
 
 	public boolean isAdmin() {
 		return admin;
