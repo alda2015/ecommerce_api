@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,16 +31,13 @@ public class Announcement implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date datePost;
 	
-	@ManyToOne
-	@JoinColumn(name="user_id", referencedColumnName="id")
-	User user;
+	private long user;
 	
-	
-	public User getUser() {
+	public long getUser() {
 		return user;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(long l) {
+		this.user = l;
 	}
 	public String getTitle() {
 		return title;

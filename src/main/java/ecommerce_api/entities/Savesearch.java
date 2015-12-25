@@ -3,8 +3,6 @@ package ecommerce_api.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,9 +19,7 @@ public class Savesearch implements Serializable {
 	private float surfaceMax;
 	private String localisation;
 	
-	@ManyToOne
-	@JoinColumn(name="user_id", referencedColumnName="id")
-	User user;
+	private int user;
 
 	public float getPrixMin() {
 		return prixMin;
@@ -65,11 +61,11 @@ public class Savesearch implements Serializable {
 		this.localisation = localisation;
 	}
 
-	public User getUser() {
+	public int getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(int user) {
 		this.user = user;
 	}
 
