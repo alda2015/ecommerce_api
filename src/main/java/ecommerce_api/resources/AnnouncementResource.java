@@ -34,11 +34,18 @@ public class AnnouncementResource {
 	    @GET
 	    @Produces({MediaType.APPLICATION_JSON})
 	    public List<Announcement> getAnnouncementsByUser() throws IllegalAccessException{
+	    	System.out.println(req.getSession().getAttribute("uid"));
 	    	if(req.getSession().getAttribute("uid")==null)
 	    		throw new IllegalAccessException("User not authenticated");
-	    	System.out.println("authentifier");
 	        return announcementRepository.findAnnouncementsByUserId((Long)req.getSession().getAttribute("uid"));
 	    }
+	    
+	    @GET
+		@Path("/{id}/")
+		@Produces({MediaType.APPLICATION_JSON})
+		public List<Announcement> getAnnouncementByUid(@PathParam("id")long id){
+	    	return announcementRepository.findAnnouncementsByUserId(id);
+		}
 	    
 	    @GET
 		@Path("/{prix}/{title}")
@@ -65,6 +72,15 @@ public class AnnouncementResource {
 	        announcementRepository.addAnnouncement(announcement);
 	    }
 	    
+	    @POST
+	    @Path("/add/{uid}")
+	    @Consumes("application/json")
+	    public void  addAnnouncementByUid(Announcement announcement,@PathParam("uid")long uid) throws IllegalAccessException{
+	        announcement.setdatePost(new Date());
+	        announcement.setUser(uid);
+	        announcementRepository.addAnnouncement(announcement);
+	    }
+	    
 	    @DELETE
 		@Path("/{aid}/{uid}")
 		public void deleteUser(@PathParam("aid")int aid,@PathParam("uid")Long uid){
@@ -75,6 +91,7 @@ public class AnnouncementResource {
 	    @Path("/update")
 		@Consumes("application/json")
 	    public void updateAnnouncement(Announcement announcement) throws IllegalAccessException{
+	    	System.out.println(req.getSession().getAttribute("uid"));
 	    	if(req.getSession().getAttribute("uid")==null)
 	    		throw new IllegalAccessException("User not authenticated");
 	    	System.out.println("authentifier");

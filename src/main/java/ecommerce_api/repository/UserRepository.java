@@ -43,10 +43,10 @@ public class UserRepository {
 	}
 	
 	public void update(User u,HttpServletRequest req){
-		if(req.getSession().getAttribute("uid")==null)
-			throw new IllegalArgumentException("Authenticate please");
-		if(u.getId() != (Long)req.getSession().getAttribute("uid"))
-			throw new IllegalArgumentException("Not identified");
+//		if(req.getSession().getAttribute("uid")==null)
+//			throw new IllegalArgumentException("Authenticate please");
+//		if(u.getId() != (Long)req.getSession().getAttribute("uid"))
+//			throw new IllegalArgumentException("Not identified");
 		if(entityManager.find(User.class, u.getId())==null)
 			throw new IllegalArgumentException("Unknown user");
 		entityManager.merge(u);
@@ -86,6 +86,7 @@ public class UserRepository {
 			try {
 				System.out.println();
 				req.getSession().setAttribute("uid", user.getId());
+				System.out.println("uid : "+req.getSession().getAttribute("uid"));
 				return Response.ok(m.writeValueAsString(user), MediaType.APPLICATION_JSON).build();
 			} catch (JsonProcessingException e) {
 				System.out.println(e.getMessage());
