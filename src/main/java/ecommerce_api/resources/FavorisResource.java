@@ -19,17 +19,6 @@ public class FavorisResource {
 	
 	@Context private HttpServletRequest req;
 	
-//	  @POST
-//	  @Path("/{iduser}/{idannouncement}")
-//	  @Consumes("application/json")
-//	    public void addFavoris(@PathParam("iduser")int iduser,@PathParam("idannouncement")int idannouncement) throws IllegalAccessException{
-//	        if(req.getSession().getAttribute("uid")==null)
-//	    		throw new IllegalAccessException("User not authenticated");
-//	       Favoris favoris = null;
-//	       favoris.setUser_id((int) req.getSession().getAttribute("uid"));
-//	       favorisRepository.addfavoriss(iduser, idannouncement);
-//	    }
-	  
 	  @POST
 	  @Path("/addFavoris")
 	  @Consumes("application/json")
