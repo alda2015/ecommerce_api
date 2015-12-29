@@ -18,7 +18,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import ecommerce_api.entities.Announcement;
-import ecommerce_api.entities.User;
 import ecommerce_api.repository.AnnouncementRepository;
 import ecommerce_api.repository.UserRepository;
 

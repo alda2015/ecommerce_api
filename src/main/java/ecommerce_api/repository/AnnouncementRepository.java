@@ -17,7 +17,7 @@ public class AnnouncementRepository {
 	    private EntityManager entityManager;
 
 	    public void addAnnouncement(Announcement announcement){
-	    	System.out.println("Persist announcement");
+//	    	System.out.println("Persist announcement");
 	        entityManager.persist(announcement);
 	    }
 
@@ -41,7 +41,7 @@ public class AnnouncementRepository {
 		
 		@SuppressWarnings("unchecked")
 		public List<Announcement> findAnnouncementsByUserId(Long uid) {
-			Query requete = entityManager.createNativeQuery("select * from Announcement where user="+uid+"", Announcement.class);
+			Query requete = entityManager.createNativeQuery("select * from Announcement where user_id="+uid+"", Announcement.class);
 			List<Announcement> announcements= (List<Announcement>)requete.getResultList();
 			System.out.println(announcements);
 			return announcements;

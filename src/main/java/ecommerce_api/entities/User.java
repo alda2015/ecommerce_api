@@ -1,6 +1,7 @@
 package ecommerce_api.entities;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +33,6 @@ public class User implements Serializable{
 	private String tel;
 	private String address;
 	private boolean admin;
-	
 	private String quiz;
 	
 	public void setQuiz(String quiz) {

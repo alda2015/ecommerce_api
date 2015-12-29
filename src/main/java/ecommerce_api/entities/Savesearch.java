@@ -19,7 +19,24 @@ public class Savesearch implements Serializable {
 	private float surfaceMax;
 	private String localisation;
 	
-	private int user;
+//	@ManyToOne
+//	@JoinColumn(name="user_id", referencedColumnName="id")
+//	User user;
+	
+	private long user_id;
+	
+	public long getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(long l) {
+		this.user_id = l;
+	}
+//	public User getUser() {
+//		return user;
+//	}
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 
 	public float getPrixMin() {
 		return prixMin;
@@ -59,14 +76,6 @@ public class Savesearch implements Serializable {
 
 	public void setLocalisation(String localisation) {
 		this.localisation = localisation;
-	}
-
-	public int getUser() {
-		return user;
-	}
-
-	public void setUser(int user) {
-		this.user = user;
 	}
 
 	public int getId() {

@@ -4,8 +4,9 @@ import java.util.Set;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
-
 import ecommerce_api.resources.AnnouncementResource;
+import ecommerce_api.resources.FavorisResource;
+import ecommerce_api.resources.SavesearchResource;
 import ecommerce_api.resources.UserResource;
 
 import java.util.Collections;
@@ -30,6 +31,8 @@ public class ApplicationConfig extends Application{
         //instead let's do it manually:
         resources.add(UserResource.class);
         resources.add(AnnouncementResource.class);
+        resources.add(SavesearchResource.class);
+        resources.add(FavorisResource.class);
         //==> we could also choose packages, see below getProperties()
         
         System.out.println("REST configuration ended successfully.");
