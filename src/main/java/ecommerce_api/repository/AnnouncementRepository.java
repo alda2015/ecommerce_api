@@ -48,7 +48,7 @@ public class AnnouncementRepository {
 		}
 		
 		public void deleteAnnouncement(int aid,Long uid){
-			Query requete = entityManager.createNativeQuery("select * from Announcement where id='"+aid+"' And user_id='"+uid+"'", Announcement.class);
+			Query requete = entityManager.createNativeQuery("select * from Announcement where id="+aid+" And user="+uid+"", Announcement.class);
 			Announcement announcement= (Announcement) requete.getSingleResult();
 			if(announcement.getId()!=aid)
 				throw new IllegalArgumentException("Suppression Impossible");
@@ -59,8 +59,9 @@ public class AnnouncementRepository {
 			entityManager.merge(a);
 		}
 		
-		public Announcement findByid(int id) {
-			Query requete = entityManager.createNativeQuery("select * from Announcement where id='"+id+"'", Announcement.class);
+		public Announcement findByid(long id) {
+			System.out.println("Find by Id");
+			Query requete = entityManager.createNativeQuery("select * from Announcement where id="+id, Announcement.class);
 			Announcement announcement = (Announcement) requete.getSingleResult();
 			return announcement;
 		}

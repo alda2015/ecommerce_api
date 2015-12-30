@@ -90,17 +90,17 @@ public class AnnouncementResource {
 	    @Path("/update")
 		@Consumes("application/json")
 	    public void updateAnnouncement(Announcement announcement) throws IllegalAccessException{
-	    	System.out.println(req.getSession().getAttribute("uid"));
-	    	if(req.getSession().getAttribute("uid")==null)
-	    		throw new IllegalAccessException("User not authenticated");
-	    	System.out.println("authentifier");
+//	    	System.out.println(req.getSession().getAttribute("uid"));
+//	    	if(req.getSession().getAttribute("uid")==null)
+//	    		throw new IllegalAccessException("User not authenticated");
+//	    	System.out.println("authentifier");
 	        announcementRepository.updateAnnouncement(announcement);
 	    }
 	    
 	    @GET
-		@Path("/{id}")
+		@Path("/a/{id}")
 		@Produces({MediaType.APPLICATION_JSON})
-		public Announcement getByid(@PathParam("id")int id){
+		public Announcement getByid(@PathParam("id")long id){
 			return announcementRepository.findByid(id);
 		}
 	    
