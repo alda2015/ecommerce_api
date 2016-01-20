@@ -46,6 +46,14 @@ public class AnnouncementResource {
 	    	return announcementRepository.findAnnouncementsByUserId(id);
 		}
 	    
+	    
+	    @GET
+		@Path("/find/{keywords}")
+		@Produces({MediaType.APPLICATION_JSON})
+		public List<Announcement> getAnnouncementByKeywords(@PathParam("keywords")String keywords){
+			return announcementRepository.findByKeywords(keywords);
+		}
+	    
 	    @GET
 		@Path("/{prix}/{title}")
 		@Produces({MediaType.APPLICATION_JSON})

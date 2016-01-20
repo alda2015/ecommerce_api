@@ -1,5 +1,6 @@
 package ecommerce_api.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -41,7 +42,8 @@ public class AnnouncementRepository {
 		
 		@SuppressWarnings("unchecked")
 		public List<Announcement> findAnnouncementsByUserId(Long uid) {
-			Query requete = entityManager.createNativeQuery("select * from Announcement where user_id="+uid+"", Announcement.class);
+			System.out.println("findAnnouncements for user "+uid);
+			Query requete = entityManager.createNativeQuery("select * from Announcement where user="+uid+"", Announcement.class);
 			List<Announcement> announcements= (List<Announcement>)requete.getResultList();
 			System.out.println(announcements);
 			return announcements;
@@ -64,6 +66,20 @@ public class AnnouncementRepository {
 			Query requete = entityManager.createNativeQuery("select * from Announcement where id="+id, Announcement.class);
 			Announcement announcement = (Announcement) requete.getSingleResult();
 			return announcement;
+		}
+
+
+		public List<Announcement> findByKeywords(String keywords) {
+			String [] keywordsArray = keywords.split(" "); 
+			List<Announcement> announcements = new ArrayList<Announcement>();
+			for (String k : keywordsArray){
+				System.out.println("keyword : "+k);
+				Query requete = entityManager.createNativeQuery("SELECT * FROM `announcement` WHERE `title` like '%"+k+"%' ", Announcement.class);
+				List<Announcement> l = (List<Announcement>)requete.getResultList();
+				announcements.addAll(l);
+				System.out.println(l);
+			}
+			return announcements;
 		}
 		
 	}

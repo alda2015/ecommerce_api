@@ -20,7 +20,7 @@ public class SavesearchRepository {
 	    }
 	 
 	 public void deletesearch(int idsave, long iduser){
-			Query requete = entityManager.createNativeQuery("select * from Savesearch where id='"+idsave+"' And user_id='"+iduser+"'", Savesearch.class);
+			Query requete = entityManager.createNativeQuery("select * from Savesearch where id='"+idsave+"' And user='"+iduser+"'", Savesearch.class);
 			Savesearch savesearch = (Savesearch) requete.getSingleResult();
 			if(savesearch.getId()!=idsave)
 				throw new IllegalArgumentException("Suppression Impossible");
