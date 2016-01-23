@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -87,7 +88,7 @@ public class AnnouncementResource {
 	        announcement.setUser(uid);
 	        announcementRepository.addAnnouncement(announcement);
 	    }
-	    
+	   
 	    @DELETE
 		@Path("/{aid}/{uid}")
 		public void deleteUser(@PathParam("aid")int aid,@PathParam("uid")Long uid){
