@@ -18,7 +18,6 @@ public class AnnouncementRepository {
 	    private EntityManager entityManager;
 
 	    public void addAnnouncement(Announcement announcement){
-//	    	System.out.println("Persist announcement");
 	        entityManager.persist(announcement);
 	    }
 
