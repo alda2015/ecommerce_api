@@ -1,91 +1,127 @@
 package ecommerce_api.entities;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
+import java.math.BigInteger;
 
 
+/**
+ * The persistent class for the announcement database table.
+ * 
+ */
 @Entity
-@Table(name="Announcement")
-public class Announcement implements Serializable{
-	private static final long serialVersionUID = 9129298985708507881L;
+@NamedQuery(name="Announcement.findAll", query="SELECT a FROM Announcement a")
+public class Announcement implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	@NotNull
-	private String title;
-	private float prix;
-	private float surface;
-	private String localisation;
-	private String photo;
-//	@Size(max=200)
-	private String descr;
+
 	@Temporal(TemporalType.DATE)
 	private Date datePost;
-	
-	private long user;
-	
-	public long getUser() {
-		return user;
+
+	@Lob
+	private String descr;
+
+	private String localisation;
+
+	@Lob
+	private byte[] photo;
+
+	private float prix;
+
+	private float surface;
+
+	private String title;
+
+	private BigInteger user;
+
+	@Column(name="user_id")
+	private int userId;
+
+	public Announcement() {
 	}
-	public void setUser(long l) {
-		this.user = l;
+
+	public int getId() {
+		return this.id;
 	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitre(String titre) {
-		this.title = titre;
-	}
-	public float getPrix() {
-		return prix;
-	}
-	public void setPrix(float prix) {
-		this.prix = prix;
-	}
-	public float getSurface() {
-		return surface;
-	}
-	public void setSurface(float surface) {
-		this.surface = surface;
-	}
-	public String getLocalisation() {
-		return localisation;
-	}
-	public void setLocalisation(String localisation) {
-		this.localisation = localisation;
-	}
-	public String getPhoto() {
-		return photo;
-	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-	public long getId() {
-		return id;
-	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getDescr() {
-		return descr;
+
+	public Date getDatePost() {
+		return this.datePost;
 	}
+
+	public void setDatePost(Date datePost) {
+		this.datePost = datePost;
+	}
+
+	public String getDescr() {
+		return this.descr;
+	}
+
 	public void setDescr(String descr) {
 		this.descr = descr;
 	}
-	public Date getdatePost() {
-		return datePost;
+
+	public String getLocalisation() {
+		return this.localisation;
 	}
-	public void setdatePost(Date datePost) {
-		this.datePost = datePost;
+
+	public void setLocalisation(String localisation) {
+		this.localisation = localisation;
 	}
-	
+
+	public byte[] getPhoto() {
+		return this.photo;
+	}
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
+
+	public float getPrix() {
+		return this.prix;
+	}
+
+	public void setPrix(float prix) {
+		this.prix = prix;
+	}
+
+	public float getSurface() {
+		return this.surface;
+	}
+
+	public void setSurface(float surface) {
+		this.surface = surface;
+	}
+
+	public String getTitle() {
+		return this.title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public BigInteger getUser() {
+		return this.user;
+	}
+
+	public void setUser(BigInteger user) {
+		this.user = user;
+	}
+
+	public int getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
 }

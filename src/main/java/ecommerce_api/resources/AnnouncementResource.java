@@ -22,6 +22,17 @@ import ecommerce_api.entities.Announcement;
 import ecommerce_api.repository.AnnouncementRepository;
 import ecommerce_api.repository.UserRepository;
 
+
+import java.io.IOException;
+import java.io.InputStream;
+import javax.ws.rs.core.Response;
+import org.apache.commons.io.IOUtils;
+//import com.google.gson.Gson;
+import org.glassfish.jersey.media.sse.OutboundEvent;
+import org.glassfish.jersey.media.sse.SseBroadcaster;
+
+import com.google.gson.Gson;
+
 @Path("/announcements")
 public class AnnouncementResource {
 	 	@EJB
@@ -73,19 +84,28 @@ public class AnnouncementResource {
 	    @Path("/add")
 	    @Consumes("application/json")
 	    public void  addAnnouncement(Announcement announcement) throws IllegalAccessException{
-	        announcement.setdatePost(new Date());
+	        announcement.setDatePost(new Date());
 	        if(req.getSession().getAttribute("uid")==null)
 	    		throw new IllegalAccessException("User not authenticated");
-	        announcement.setUser((long)req.getSession().getAttribute("uid"));
+	        announcement.setUserId((int) req.getSession().getAttribute("uid"));
 	        announcementRepository.addAnnouncement(announcement);
 	    }
 	    
+	   
 	    @POST
 	    @Path("/add/{uid}")
 	    @Consumes("application/json")
 	    public void  addAnnouncementByUid(Announcement announcement,@PathParam("uid")long uid) throws IllegalAccessException{
-	        announcement.setdatePost(new Date());
-	        announcement.setUser(uid);
+	        announcement.setDatePost(new Date());
+	        announcement.setUserId((int) uid);
+	        announcementRepository.addAnnouncement(announcement);
+	    }
+	    @POST
+	    @Path("/addA/{uid}")
+	    @Consumes(MediaType.MULTIPART_FORM_DATA)
+	    public void  addAnnouncementByUidImage(Announcement announcement,@PathParam("uid")long uid) throws IllegalAccessException{
+	        announcement.setDatePost(new Date());
+	        announcement.setUserId((int) uid);
 	        announcementRepository.addAnnouncement(announcement);
 	    }
 	   
@@ -113,4 +133,28 @@ public class AnnouncementResource {
 			return announcementRepository.findByid(id);
 		}
 	    
+	    @POST
+		@Path("/announcement/{announcement}/{uid}")
+		@Produces(MediaType.TEXT_PLAIN)
+		@Consumes("*/*")
+		public void createAnnouncement(
+				InputStream stream,@PathParam("announcement")String announcement,@PathParam("uid")int uid) throws IllegalAccessException{
+	    	System.out.println("id user "+ uid);
+			Gson gson = new Gson(); 
+			final Announcement announce = gson.fromJson(announcement, Announcement.class);
+
+			System.out.println("prix -------------->" + announce.getPrix());
+			byte[] photo;
+			try {
+				photo = IOUtils.toByteArray(stream);
+				System.out.println(photo); 
+				announce.setPhoto(photo);
+				announce.setUserId(uid);
+				announce.setDatePost(new Date());
+				announcementRepository.addAnnouncement(announce);
+				System.out.println(announce.getSurface());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 }

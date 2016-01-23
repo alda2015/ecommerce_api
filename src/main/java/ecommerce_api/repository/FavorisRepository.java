@@ -19,7 +19,7 @@ public class FavorisRepository {
 			Announcement announcement =  (Announcement) requete.getSingleResult();
 			if(announcement.getId()!=favoris.getAnnouncement_id())
 				throw new IllegalArgumentException("Impossible d'ajouter aux favoris");
-			if (announcement.getUser()!=favoris.getUser_id())
+			if (announcement.getUserId()!=favoris.getUser_id())
 				throw new IllegalArgumentException("Impossible d'ajouter aux favoris");
 		 entityManager.persist(favoris);
 	 }
