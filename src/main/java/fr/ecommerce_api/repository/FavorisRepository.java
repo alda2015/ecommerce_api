@@ -1,12 +1,12 @@
-package ecommerce_api.repository;
+package fr.ecommerce_api.repository;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import ecommerce_api.entities.Announcement;
-import ecommerce_api.entities.Favoris;
+import fr.ecommerce_api.entities.Announcement;
+import fr.ecommerce_api.entities.Favoris;
 
 @Stateless
 public class FavorisRepository {

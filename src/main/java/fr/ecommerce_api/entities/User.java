@@ -1,4 +1,4 @@
-package ecommerce_api.entities;
+package fr.ecommerce_api.entities;
 
 import java.io.Serializable;
 import javax.persistence.Column;
