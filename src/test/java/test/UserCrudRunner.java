@@ -1,4 +1,4 @@
-package fr.ecommerce_api.test;
+package test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -55,7 +55,7 @@ public class UserCrudRunner extends JUnitStories {
 	                .useStoryReporterBuilder(
 	                        new StoryReporterBuilder()
 	                                .withCodeLocation(CodeLocations.codeLocationFromClass(embeddableClass))
-	                                .withFormats(Format.STATS,Format.HTML)
+	                                .withFormats(Format.CONSOLE,Format.STATS,Format.HTML)
 	                                .withPathResolver(new org.jbehave.core.reporters.FilePrintStreamFactory.ResolveToPackagedName())
 	                                .withViewResources(viewResources)
 	                                .withFailureTrace(true)

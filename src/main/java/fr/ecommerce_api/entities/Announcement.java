@@ -36,8 +36,6 @@ public class Announcement implements Serializable {
 
 	private String title;
 
-	private BigInteger user;
-
 	@Column(name="user_id")
 	private int userId;
 
@@ -106,14 +104,6 @@ public class Announcement implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public BigInteger getUser() {
-		return this.user;
-	}
-
-	public void setUser(BigInteger user) {
-		this.user = user;
 	}
 
 	public int getUserId() {

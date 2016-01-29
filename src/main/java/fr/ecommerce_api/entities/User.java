@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="User")
+@Table
 public class User implements Serializable{
 	/**
 	 * 
@@ -19,19 +19,19 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 8897117888817851683L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
-	@NotNull
-	@Column(name = "email", length = 200)
+	private int id;
+	//@NotNull
+	//@Column(name = "email", length = 200)
 	private String email;
-	@Size(max=30)
-	private String firstName;
-	@Column(length=30)
-	private String lastName;
-	@Size(min=8)
+	//@Size(min=8)
 	private String mdp;
 	private String tel;
 	private String address;
+	//@Size(max=30)
+	private String firstname;
 	private boolean admin;
+	//@Column(length=30)
+	private String lastname;
 	private String quiz;
 	
 	public void setQuiz(String quiz) {
@@ -48,10 +48,10 @@ public class User implements Serializable{
 		this.admin = admin;
 	}
 	
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	
@@ -61,18 +61,20 @@ public class User implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getFirstName() {
-		return firstName;
+
+	public String getFirstname() {
+		return firstname;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public String getLastname() {
+		return lastname;
 	}
-	public String getLastName() {
-		return lastName;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
+	
 	public String getAddress() {
 		return address;
 	}

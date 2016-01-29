@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="favoris")
+@Table(name="Favoris")
 public class Favoris implements Serializable {
 
 	/**
