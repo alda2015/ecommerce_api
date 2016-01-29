@@ -1,7 +1,6 @@
 package fr.ecommerce_api.resources;
 
 import java.util.List;
-
 import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;

@@ -1,6 +1,5 @@
 package test;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,20 +17,17 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 public class UserCRUDSteps{
 	
 	private CloseableHttpClient client;
 	private HttpPost httpPost;
 	private CloseableHttpResponse response;
 
-	@Given("a user with email $email and password is $password")
-	public void givenAUser(String email, String password) throws UnsupportedEncodingException{
+	@Given("a user with email $email and mdp is $mdp")
+	public void givenAUser(String email, String mdp) throws UnsupportedEncodingException{
 		client = HttpClients.createDefault();
 		httpPost = new HttpPost("http://localhost:8080/ecommerce_api/users/addUser");
-	    String json = "{\"email\":\""+email+"\",\"password\":\""+password+"\"}";
+	    String json = "{\"email\":\""+email+"\",\"mdp\":\""+mdp+"\"}";
 	    StringEntity entity = new StringEntity(json);
 	    httpPost.setEntity(entity);
 	    httpPost.setHeader("Content-type", "application/json");
@@ -44,9 +40,6 @@ public class UserCRUDSteps{
 	
 	@Then("a user with email $email should be added into the database")
 	public void checkIfUserAdded(String email) throws IOException{
-		
-		//assertThat(response.getStatusLine().getStatusCode()).isEqualTo(204);
-
 		HttpGet httpGet = new HttpGet("http://localhost:8080/ecommerce_api/users/"+email);
 		response = client.execute(httpGet);
 		BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
@@ -56,11 +49,6 @@ public class UserCRUDSteps{
 		while ((line = rd.readLine()) != null) {
 		    result.append(line);
 		}
-
-//		ObjectMapper mapper = new ObjectMapper();
-//		JsonNode actualObj = mapper.readTree(result.toString());
-//		String retrievedEmail = actualObj.get("email").textValue();
-//		assertThat(retrievedEmail).isEqualTo(email);
 		
 		HttpDelete httpDelete = new HttpDelete("http://localhost:8080/ecommerce_api/users/"+email);
 
@@ -68,7 +56,19 @@ public class UserCRUDSteps{
 		client.close();
 	}
 	
-
-
-
+//	************************************************************************
+	@Given("a user with email $email and mdp is $mdp")
+	public void givenLogin(String email, String mdp) throws UnsupportedEncodingException{
+		client = HttpClients.createDefault();
+		httpPost = new HttpPost("http://localhost:8080/ecommerce_api/users/login");
+	    String json = "{\"email\":\""+mdp+"\",\"password\":\""+mdp+"\"}";
+	    StringEntity entity = new StringEntity(json);
+	    httpPost.setEntity(entity);
+	    httpPost.setHeader("Content-type", "application/json");
+	}
+	
+	@When("I'm login")
+	public void Login() throws ClientProtocolException, IOException{
+		response = client.execute(httpPost);
+	}
 }
