@@ -42,7 +42,7 @@ public class AnnouncementRepository {
 		@SuppressWarnings("unchecked")
 		public List<Announcement> findAnnouncementsByUserId(Long uid) {
 			System.out.println("findAnnouncements for user "+uid);
-			Query requete = entityManager.createNativeQuery("select * from Announcement where user="+uid+"", Announcement.class);
+			Query requete = entityManager.createNativeQuery("select * from Announcement where user_id="+uid+"", Announcement.class);
 			List<Announcement> announcements= (List<Announcement>)requete.getResultList();
 			System.out.println(announcements);
 			return announcements;

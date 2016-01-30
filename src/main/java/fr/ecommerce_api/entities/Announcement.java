@@ -4,8 +4,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 import java.math.BigInteger;
-
-
 /**
  * The persistent class for the announcement database table.
  * 
@@ -22,7 +20,6 @@ public class Announcement implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date datePost;
 
-	@Lob
 	private String descr;
 
 	private String localisation;

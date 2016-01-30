@@ -57,18 +57,18 @@ public class UserCRUDSteps{
 	}
 	
 //	************************************************************************
-	@Given("a user with email $email and mdp is $mdp")
-	public void givenLogin(String email, String mdp) throws UnsupportedEncodingException{
-		client = HttpClients.createDefault();
-		httpPost = new HttpPost("http://localhost:8080/ecommerce_api/users/login");
-	    String json = "{\"email\":\""+mdp+"\",\"password\":\""+mdp+"\"}";
-	    StringEntity entity = new StringEntity(json);
-	    httpPost.setEntity(entity);
-	    httpPost.setHeader("Content-type", "application/json");
-	}
-	
-	@When("I'm login")
-	public void Login() throws ClientProtocolException, IOException{
-		response = client.execute(httpPost);
-	}
+//	@Given("a user with email $email and mdp is $mdp")
+//	public void givenLogin(String email, String mdp) throws UnsupportedEncodingException{
+//		client = HttpClients.createDefault();
+//		httpPost = new HttpPost("http://localhost:8080/ecommerce_api/users/login");
+//	    String json = "{\"email\":\""+mdp+"\",\"password\":\""+mdp+"\"}";
+//	    StringEntity entity = new StringEntity(json);
+//	    httpPost.setEntity(entity);
+//	    httpPost.setHeader("Content-type", "application/json");
+//	}
+//	
+//	@When("I'm login")
+//	public void Login() throws ClientProtocolException, IOException{
+//		response = client.execute(httpPost);
+//	}
 }
