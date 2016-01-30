@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 
 import java.util.Properties;
 
+import javax.naming.Context;
 import javax.naming.InitialContext;
 
 import org.junit.Before;
@@ -29,8 +30,8 @@ public class TestUserBean {
 	public void setUp() throws Exception {
 		System.out.println("Init the User Bean ...");
 		final Properties p = new Properties();
-		p.setProperty("java.naming.factory.initial", "org.apache.openejb.client.LocalInitialContextFactory");
-	    p.setProperty("openejb.jndiname.format", "UserRepository/Local");
+		p.setProperty(Context.INITIAL_CONTEXT_FACTORY, "org.jnp.interfaces.NamingContextFactory");
+		p.setProperty(Context.PROVIDER_URL, "localhost:8080");
 	    userBean = (UserRepository) new InitialContext(p).lookup("UserRepository/Local");
 	}
 
