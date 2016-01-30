@@ -1,0 +1,40 @@
+<div id="profilePanel" style="width:50%">
+	<h2><span class="glyphicon glyphicon-lock"></span> Profile </h2>
+	<form class="form-horizontal" ng-submit="inscription()" role="form" name="form">
+		<div class="form-group">
+			<label for="email" class="control-label"> Email </label>
+			<input type="email" class="form-control" ng-model="email" id="email" placeholder="Your Email">
+		</div>
+		<div class="form-group">
+			<label for="fname" class="control-label"> First Name </label>
+			<input type="text" class="form-control" ng-model="firstname" id="fname" placeholder="First Name">
+		</div>
+		<div class="form-group">
+			<label for="lname" class="control-label"> Last Name </label>
+			<input type="text" class="form-control" ng-model="lastname" id="lname" placeholder="Last Name">
+		</div>
+		<div class="form-group">
+			<label for="tel" class="control-label"> Tel.  </label>
+			<input type="text" class="form-control" ng-model="tel" id="tel" placeholder="Telephone">
+		</div>
+		<div class="form-group">
+			<label for="address" class="control-label"> Address </label>
+			<input type="text" class="form-control" ng-model="address" id="address" placeholder="Address">
+		</div>
+
+		<div class="form-group">
+			<label for="pwd" class="control-label"> Password </label>
+			<input type="password" class="form-control" ng-model="mdp" id="pwd" placeholder="Your Password">
+		</div>
+		<div class="form-group">
+			<label for="confpwd" class="control-label">Confirmation Password </label>
+			<input type="password" class="form-control" ng-model="mdpcheck" id="confpwd" placeholder="Confirmation Your Password">
+		</div>
+		<div class="form-group">
+			<div >
+				<button class="btn btn-default" type="submit" ng-click="updateProfile()">Valider</button>
+			</div>
+			
+		</div>
+	</form>
+</div>

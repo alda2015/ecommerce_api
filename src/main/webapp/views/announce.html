@@ -1,0 +1,68 @@
+<div id="inscriptionPanel" style="width:50%">
+	<h2>{{title}}</h2>
+	<div ng-show="mine">
+		<button class="btn btn-defaut btn-xs"><span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModal"> Edit</span></button> 
+		<button class="btn btn-danger btn-xs" ng-click="delA()"><span class="glyphicon glyphicon-remove"> Delete</span></button><br><br>
+	</div>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	      </div>
+	      <div class="modal-body" style="margin: 10px 10px 10px 10px;">
+	        <form class="form-horizontal" role="form" name="form">
+				<div class="form-group">
+					<label for="title" class="control-label"> Title </label>
+					<input type="text" class="form-control" ng-model="title" id="title" placeholder="Title">
+				</div>
+					<div class="form-group ">
+						<label for="price" class="control-label"> Price </label>
+						<input type="text" class="form-control" style="width:30%" ng-model="prix" id="price" placeholder="Price">
+					</div>
+					<div class="form-group ">
+						<label for="surface" class="control-label"> Surface </label>
+						<input type="text" class="form-control" style="width:30%" ng-model="surface" id="surface" placeholder="Surface">
+					</div>
+					<div class="form-group ">
+						<label for="localisation" class="control-label"> Localisation </label>
+						<input type="text" class="form-control" style="width:30%" ng-model="localisation" id="localisation" placeholder="Localisation">
+					</div>
+				<div class="form-group">
+					<label for="desc" class="control-label"> Description </label>
+					<textarea type="text" class="form-control" ng-model="desc" id="desc" placeholder="Description"></textarea>
+				</div>
+			</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button class="btn btn-default" type="submit" ng-click="putA()">Post</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<div id="image" class="img-thumbnail">
+		<div style="width: 400px;height: auto;overflow:hidden">
+			<img ng-src="data:image/JPEG;base64,{{photo}}">
+		</div>
+	</div>
+	<hr>
+	<table>
+		<tr><td>Posted by <a href="#">{{user}}</a></td><td>&nbsp;&nbsp;</td> <td><b>Date</b> {{datePost}}</td></tr>
+		<tr><td><b><span class="glyphicon glyphicon-euro"></span> Price :</b></td><td> {{prix}}€</td></tr>
+		<tr><td><b><span class="glyphicon glyphicon-resize-small"></span> Surface :</b></td><td> {{surface}} m<sup>2</sup></td></tr>
+		<tr><td><b><span class="glyphicon glyphicon-map-marker"></span> Localisation : </b></td><td>  {{localisation}}</td></tr>
+	</table>
+	<h5><b>Description : </b></h5>
+	<div class="desc"> {{desc}}</div><br>
+</div>
+
+<style type="text/css">
+	.desc{
+		background-color: #F2F2F2;
+		width: 350px;
+		padding: 10px 10px 10px 10px;
+	}
+</style>

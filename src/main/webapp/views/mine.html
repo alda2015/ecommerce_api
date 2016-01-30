@@ -1,0 +1,67 @@
+<div id="minePanel" style="width:150%">
+	<h2><span class="glyphicon glyphicon-bookmark"></span> My Announcements 
+		<button class="btn btn-default">
+			<a href="#/image">
+				<span class="glyphicon glyphicon-plus-sign" ></span>
+			</a>
+		</button>
+	</h2> 
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>	        
+	       <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	      </div>
+	      <div class="modal-body" style="margin: 10px 10px 10px 10px;">
+	        <form class="form-horizontal" role="form" name="form">
+				<div class="form-group">
+					<label for="title" class="control-label"> Title </label>
+					<input type="text" class="form-control" ng-model="title" id="title" placeholder="Title">
+				</div>
+					<div class="form-group ">
+						<label for="price" class="control-label"> Price </label>
+						<input type="text" class="form-control" style="width:30%" ng-model="price" id="price" placeholder="Price">
+					</div>
+					<div class="form-group ">
+						<label for="surface" class="control-label"> Surface </label>
+						<input type="text" class="form-control" style="width:30%" ng-model="surface" id="surface" placeholder="Surface">
+					</div>
+					<div class="form-group ">
+						<label for="localisation" class="control-label"> Localisation </label>
+						<input type="text" class="form-control" style="width:30%" ng-model="localisation" id="localisation" placeholder="Localisation">
+					</div>
+				<div class="form-group">
+					<label for="desc" class="control-label"> Description </label>
+					<textarea type="text" class="form-control" ng-model="desc" id="desc" placeholder="Description"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="file" class="control-label"> Photo </label>
+					<input type="file" class="form-control" file-model="foto" id="file" />
+				</div>
+			</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button class="btn btn-default" type="submit" ng-click="postA()">Post</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<table>
+		<tr ng-repeat="a in announcements">
+		<div id="image" class="img-thumbnail">
+				<div style="width: 400px;height: auto;overflow:hidden">
+					<img ng-src="data:image/JPEG;base64,{{a.photo}}">
+				</div>
+			</div>
+			<td valign="top">
+				<h3><a href="#/a/{{a.id}}">{{a.title}}</a></h3>
+				<span class="glyphicon glyphicon-euro"> <b>Price</b> : {{a.prix}}</span><br>
+				<span class="glyphicon glyphicon-resize-small"> <b>Superficie</b> : {{a.surface}}</span><br>
+				<span class="glyphicon glyphicon-map-marker"> <b>Localisation</b> : {{a.localisation}}</span><br>
+				<span class="glyphicon glyphicon-calendar"> <b>Posted</b> : {{a.datePost}}</span>		
+			</td>
+		</tr>
+	</table>
+</div>
