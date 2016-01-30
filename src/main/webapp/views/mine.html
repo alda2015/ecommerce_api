@@ -50,11 +50,13 @@
 	</div>
 	<table>
 		<tr ng-repeat="a in announcements">
-		<div id="image" class="img-thumbnail">
+			<td>
+				<div id="image" class="img-thumbnail">
 				<div style="width: 400px;height: auto;overflow:hidden">
 					<img ng-src="data:image/JPEG;base64,{{a.photo}}">
 				</div>
 			</div>
+			</td>
 			<td valign="top">
 				<h3><a href="#/a/{{a.id}}">{{a.title}}</a></h3>
 				<span class="glyphicon glyphicon-euro"> <b>Price</b> : {{a.prix}}</span><br>

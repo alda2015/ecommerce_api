@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -78,7 +79,7 @@ public class UserRepository {
 			user = (User) requete.getSingleResult();
 		}catch(Exception e){
 			System.out.println("not found");
-			return Response.ok("{\"error\" : \"not found\"}",MediaType.APPLICATION_JSON).build();
+			return Response.status(Status.NOT_FOUND).build();
 		}
 		
 		if (user.getMdp().equals(mdp)){

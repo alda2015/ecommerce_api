@@ -20,11 +20,13 @@ angular.module('Login')
   				"mdp":pwd
   			}).success(function(response){
   				console.log('success ',response);
+          if(response.error==="not found")
+              return alert('User Not in DB');
   				service.setSession(response)
   				cb(response);
   			}).error(function(response){
   				console.log('failed ',response);
-  				cb(response);
+          alert('User Not in DB');
   			});
   		}
   		service.setSession = function(user){

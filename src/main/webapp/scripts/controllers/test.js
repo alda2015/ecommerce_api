@@ -27,7 +27,7 @@ angular.module('Test')
 			console.log("file---------------->",JSON.stringify(file));
 
 			file.upload = Upload.http({
-				url: '/ws/ecommerce_api/announcements/announcement/'+JSON.stringify($scope.announce)+'/'+$cookies.globals.currentUser.id,
+				url: '/ecommerce_api/announcements/announcement/'+JSON.stringify($scope.announce)+'/'+$cookies.globals.currentUser.id,
 				headers: {
 					'Content-Type': file.type
 				},

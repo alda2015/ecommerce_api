@@ -14,7 +14,7 @@ angular.module('Announce')
       $scope.localisation = "Gironde";
       $scope.user = "psow"
       $scope.getA = function(){
-        $http.get('/ws/ecommerce_api/announcements/a/'+$routeParams.id)
+        $http.get('/ecommerce_api/announcements/a/'+$routeParams.id)
         .success(function(response){
           console.log('success '+response.id);
           $scope.title = response.title;
@@ -34,11 +34,11 @@ angular.module('Announce')
           }
         }).error(function(response){
           console.log('failed '+response);
-        });  
-      };
+        })  
+      }
       
       $scope.putA = function (){
-        $http.put('/ws/ecommerce_api/announcements/update',{
+        $http.put('/ecommerce_api/announcements/update',{
             "id" : $routeParams.id,
             "datePost" : $scope.datePost,
             "title": $scope.title,
@@ -53,12 +53,12 @@ angular.module('Announce')
         }).error(function(response){
           console.log('failed '+response);
         });
-      };
+      }
       $scope.delA = function (){
         $http.delete('/ecommerce_api/announcements/'+$routeParams.id+'/'+$cookies.globals.currentUser.id)
         .success(function(response){
           console.log('success '+response.id);
-          $window.location.href="#/mine";
+          $window.location.href="#/mine"
         }).error(function(response){
           console.log('failed '+response);
         });

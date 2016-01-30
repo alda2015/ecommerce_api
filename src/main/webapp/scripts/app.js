@@ -11,6 +11,7 @@
 
 angular.module('Login',['ngCookies']);
 angular.module('Inscription',[]);
+angular.module('Signup',[]);
 angular.module('News',[]);
 angular.module('Mine',['ngCookies']);
 angular.module('Profile',['ngCookies']);
@@ -26,6 +27,7 @@ angular
     'Inscription',
     'News',
     'Mine',
+    'Signup',
     'Announce',
     'Profile',
     'Test'
@@ -56,6 +58,10 @@ angular
       .when('/profile',{
         templateUrl: 'views/profile.html',
         controller:  'ProfileCtrl'
+      })
+      .when('/signup', {
+        templateUrl: 'views/signup.html',
+        controller: 'SignupCtrl',
       })
       .when('/a/:id',{
         templateUrl: 'views/announce.html',

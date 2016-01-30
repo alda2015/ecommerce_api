@@ -5,7 +5,6 @@ angular.module('Mine')
   .controller('MineCtrl', ['$cookies', '$scope', '$http', '$window' 
     ,function ($cookies, $scope, $http, $window) {
       if($cookies.globals === undefined){
-    	alert("Not logged in");
         $window.location.href="#/login";
         return ;
       }
