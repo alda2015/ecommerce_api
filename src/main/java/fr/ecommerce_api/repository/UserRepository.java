@@ -1,4 +1,4 @@
-package ecommerce_api.repository;
+package fr.ecommerce_api.repository;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import javax.ws.rs.core.Response;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import ecommerce_api.entities.User;
+import fr.ecommerce_api.entities.User;
 
 @Stateless
 public class UserRepository {

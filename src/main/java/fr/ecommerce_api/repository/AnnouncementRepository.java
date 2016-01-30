@@ -1,4 +1,4 @@
-package ecommerce_api.repository;
+package fr.ecommerce_api.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import ecommerce_api.entities.Announcement;
+import fr.ecommerce_api.entities.Announcement;
 
 @Stateless
 public class AnnouncementRepository {

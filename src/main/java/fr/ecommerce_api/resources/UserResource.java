@@ -1,7 +1,6 @@
-package ecommerce_api.resources;
+package fr.ecommerce_api.resources;
 
 import java.util.List;
-
 import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
@@ -16,8 +15,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import ecommerce_api.entities.User;
-import ecommerce_api.repository.UserRepository;
+import fr.ecommerce_api.entities.User;
+import fr.ecommerce_api.repository.UserRepository;
 
 @Path("/users")
 public class UserResource {

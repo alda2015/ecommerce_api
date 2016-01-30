@@ -1,13 +1,14 @@
-package ecommerce_api;
+package fr.ecommerce_api;
 
 import java.util.Set;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
-import ecommerce_api.resources.AnnouncementResource;
-import ecommerce_api.resources.FavorisResource;
-import ecommerce_api.resources.SavesearchResource;
-import ecommerce_api.resources.UserResource;
+
+import fr.ecommerce_api.resources.AnnouncementResource;
+import fr.ecommerce_api.resources.FavorisResource;
+import fr.ecommerce_api.resources.SavesearchResource;
+import fr.ecommerce_api.resources.UserResource;
 
 import java.util.Collections;
 import java.util.HashMap;

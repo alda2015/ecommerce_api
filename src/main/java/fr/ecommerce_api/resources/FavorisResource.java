@@ -1,4 +1,4 @@
-package ecommerce_api.resources;
+package fr.ecommerce_api.resources;
 
 import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;
@@ -8,8 +8,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 
-import ecommerce_api.entities.Favoris;
-import ecommerce_api.repository.FavorisRepository;
+import fr.ecommerce_api.entities.Favoris;
+import fr.ecommerce_api.repository.FavorisRepository;
 
 @Path("/favoris")
 public class FavorisResource {

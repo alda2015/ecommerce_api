@@ -1,7 +1,6 @@
-package ecommerce_api.resources;
+package fr.ecommerce_api.resources;
 
 import java.util.List;
-
 import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
@@ -14,8 +13,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import ecommerce_api.entities.Savesearch;
-import ecommerce_api.repository.SavesearchRepository;
+import fr.ecommerce_api.entities.Savesearch;
+import fr.ecommerce_api.repository.SavesearchRepository;
 
 @Path("/saveseach")
 public class SavesearchResource {

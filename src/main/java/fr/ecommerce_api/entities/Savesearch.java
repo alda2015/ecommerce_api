@@ -1,10 +1,9 @@
-package ecommerce_api.entities;
+package fr.ecommerce_api.entities;
 
 import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name="Savesearch")
@@ -32,12 +31,6 @@ public class Savesearch implements Serializable {
 	public void setUser_id(long l) {
 		this.user_id = l;
 	}
-//	public User getUser() {
-//		return user;
-//	}
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
 
 	public float getPrixMin() {
 		return prixMin;

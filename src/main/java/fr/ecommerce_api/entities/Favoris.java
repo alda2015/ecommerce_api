@@ -1,11 +1,11 @@
-package ecommerce_api.entities;
+package fr.ecommerce_api.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="favoris")
+@Table(name="Favoris")
 public class Favoris implements Serializable {
 
 	/**

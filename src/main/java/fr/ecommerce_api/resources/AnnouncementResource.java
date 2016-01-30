@@ -1,12 +1,10 @@
-package ecommerce_api.resources;
+package fr.ecommerce_api.resources;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-
 import java.util.Date;
 import java.util.List;
-
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -17,20 +15,12 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-
-import ecommerce_api.entities.Announcement;
-import ecommerce_api.repository.AnnouncementRepository;
-import ecommerce_api.repository.UserRepository;
-
-
+import fr.ecommerce_api.repository.AnnouncementRepository;
+import fr.ecommerce_api.repository.UserRepository;
+import fr.ecommerce_api.entities.Announcement;
 import java.io.IOException;
 import java.io.InputStream;
-import javax.ws.rs.core.Response;
 import org.apache.commons.io.IOUtils;
-//import com.google.gson.Gson;
-import org.glassfish.jersey.media.sse.OutboundEvent;
-import org.glassfish.jersey.media.sse.SseBroadcaster;
-
 import com.google.gson.Gson;
 
 @Path("/announcements")
