@@ -17,6 +17,7 @@ angular.module('Mine',['ngCookies']);
 angular.module('Profile',['ngCookies']);
 angular.module('Announce',['ngCookies']);
 angular.module('Test',['ngCookies']);
+angular.module('Admin',['ngCookies']);
 
 angular
   .module('ecommerceApp', [
@@ -30,7 +31,8 @@ angular
     'Signup',
     'Announce',
     'Profile',
-    'Test'
+    'Test',
+    'Admin'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -51,6 +53,12 @@ angular
         templateUrl: 'views/news.html',
         controller:  'NewsCtrl'
       })
+
+      .when('/',{
+        templateUrl: 'views/news.html',
+        controller:  'NewsCtrl'
+      })
+
       .when('/mine',{
         templateUrl: 'views/mine.html',
         controller:  'MineCtrl'
@@ -59,6 +67,11 @@ angular
         templateUrl: 'views/profile.html',
         controller:  'ProfileCtrl'
       })
+      .when('/admin',{
+        templateUrl: 'views/admin.html',
+        controller:  'AdminCtrl'
+      })
+
       .when('/signup', {
         templateUrl: 'views/signup.html',
         controller: 'SignupCtrl',

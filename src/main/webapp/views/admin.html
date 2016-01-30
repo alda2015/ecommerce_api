@@ -1,0 +1,44 @@
+<div>
+		<h2><span class="glyphicon glyphicon-lock"></span> Liste Utilisateur Pour Admin </h2>
+
+</div>
+
+	<table>
+		<tr ng-repeat="u in user">
+			<td valign="top">
+				<span><b>Email </b>:{{u.email}}</span><br>
+				<span> <b>Nom </b> : {{u.lastname}}</span><br>
+				<span> <b>Prenom</b> : {{u.firstname}}</span><br>
+				<span> <b>Tel</b> : {{u.tel}}</span><br>
+				<span> <b>Address</b> : {{u.address}}</span>
+				<hr>
+			</td>
+		</tr>
+	</table>
+
+
+
+<div id="lastAnnouncementsPanel" style="width:150%">
+	
+	<h2><span class="glyphicon glyphicon-bookmark"></span> Lastest Announcements</h2>
+
+	<table>
+		<tr ng-repeat="a in announcements">
+			<td>	
+				<!-- <div id="image" style="width: 50%;height: 50%" class="img-thumbnail" float="left"> -->
+				<div id="image" class="img-thumbnail">
+					<div style="width: 400px;height: auto;overflow:hidden">
+						<img ng-src="data:image/JPEG;base64,{{a.photo}}">
+					</div>
+				</div>
+			</td>
+			<td valign="top">
+				<h3><a href="#/a/{{a.id}}">{{a.title}}</a></h3>
+				<span class="glyphicon glyphicon-euro"> <b>Price</b> : {{a.prix}}</span><br>
+				<span class="glyphicon glyphicon-resize-small"> <b>Superficie</b> : {{a.surface}}</span><br>
+				<span class="glyphicon glyphicon-map-marker"> <b>Localisation</b> : {{a.localisation}}</span><br>
+				<span class="glyphicon glyphicon-calendar"> <b>Posted</b> : {{a.datePost}}</span>
+			</td>
+		</tr>
+	</table>
+</div>
